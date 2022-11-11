@@ -37,4 +37,11 @@ public class CourseRepository {
       }
       students.add(s);
     }
+    public ArrayList<Student> getAllEnrolledStudents(){
+      ArrayList<Student> enrolled=new ArrayList<>();
+        for (Course c:courses) {
+           enrolled.addAll(c.getStudents());
+        }
+        return enrolled;
+    }
 }

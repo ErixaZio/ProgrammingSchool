@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
-   private Scanner sc = new Scanner(System.in);
-   private CourseRepository repo= new CourseRepository();
+    private Scanner sc = new Scanner(System.in);
+    private CourseRepository repo = new CourseRepository();
 
     public void start() {
-        while(true) {
+        while (true) {
             System.out.println("Menù:\n" +
                     "-V = visualizza dettagli corsi;\n" +
                     "-S = visualizza dettagli studenti;\n" +
@@ -23,8 +23,6 @@ public class UserInterface {
                 for (Course c : courses) {
                     System.out.println(c.informationCourse());
                 }
-
-
             } else if (s.equals("S")) {
                 var students = repo.getAllStudents();
                 for (Student st : students) {
@@ -55,21 +53,23 @@ public class UserInterface {
                 String surname = sc.nextLine();
                 System.out.println("inserisci data di nascita (aaaa-mm-gg): ");
                 String db = sc.nextLine();
-                LocalDate dob =LocalDate.parse(db);
+                LocalDate dob = LocalDate.parse(db);
                 System.out.println("inserisci l'id del corso di iscrizione:");
                 int idCorso = sc.nextInt();
                 sc.nextLine();
                 Student s1 = new Student(id, name, surname, dob);
                 repo.enrollStudent(s1, idCorso);
-
+            } else if (s.equals("X")) {
+                System.out.println("grazie e arrivederci");
+                break;
             } else {
                 System.out.println("Hai sbagliato lettera,riprova");
             }
         }
 
-        }
-
     }
+
+}
 
 
 
